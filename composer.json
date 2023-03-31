@@ -1,0 +1,16 @@
+{
+    "name": "davidmeth/scuba-php",
+    "description": "\"Framework\" entre aspas para o desafio de sete dias",
+    "type": "project",
+    "authors": [
+        {
+            "name": "me42th",
+            "email": "david.meth@live.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Scuba\\" : "src/"
+        }
+    }
+}
