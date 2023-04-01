@@ -1,11 +1,6 @@
-[
+[ 
     {
-        "name": "thiago",
-        "email": "thiago@example.com",
-        "password": "$argon2id$v=19$m=65536,t=4,p=1$SlNiU0NZcXBpREpHWDdZdw$4wTZfqN6qsnS+VowStZV+NUVWU5m0L8cDsrodEeBzqU"
-    },
-    {
-        "name": "beatriz",
+        "nome":"beatriz",
         "email": "beatriz@email.com",
         "password": "$argon2id$v=19$m=65536,t=4,p=1$bC5leDBoS01LZnVaaDVTdA$edKdM442GKwTO3aSdKRt6urpu03cgfR4ADbR+iLRf\/s"
     },
@@ -13,5 +8,9 @@
         "name": "teste",
         "email": "email3@example.com",
         "password": "$argon2id$v=19$m=65536,t=4,p=1$bDRySS93eVpqLm4xUG9ORw$KFSpM3\/TWz7UvmWc6LiyiclDS7xfa4XHZzSR8RZelZw"
-    }
-]
+    } 
+,{
+    "name": "natalia",
+    "email": "email2@example.com",
+    "password": "$argon2id$v=19$m=65536,t=4,p=1$cld3TkYuUFUvaDNaOC9pcA$Ipjy8PPhe\/4aoMaS+YrdAVEVI4Q8Q9JXw+pnhe4Brxk"
+}]

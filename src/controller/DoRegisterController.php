@@ -2,8 +2,11 @@
 
 namespace Scuba\Controller;
 
-class DoRegisterController implements Controller
+use Scuba\Repository\UserRepository;
+
+class DoRegisterController extends UserRepository implements Controller
 {
+
     public function do_process_request()
     {
         $name = filter_input(INPUT_POST, "name");
@@ -34,13 +37,9 @@ class DoRegisterController implements Controller
             "password" => $password_hash
         ];
 
-        $jason = json_encode($user_data, JSON_PRETTY_PRINT);
+        $this->addUser($user_data);
+         
 
-        $path = __DIR__ . '/../../data/users.json';
-
-        $file = fopen($path, 'a');
-        fwrite($file, $jason);
-        fclose($file);
         header('Location: /login', response_code:302);
 
     }
