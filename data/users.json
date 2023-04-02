@@ -1,16 +1,32 @@
-[ 
+[
     {
-        "nome":"beatriz",
-        "email": "beatriz@email.com",
-        "password": "$argon2id$v=19$m=65536,t=4,p=1$bC5leDBoS01LZnVaaDVTdA$edKdM442GKwTO3aSdKRt6urpu03cgfR4ADbR+iLRf\/s"
+        "name": "thiago",
+        "email": "thiago@thiago.com",
+        "password": "$argon2id$v=19$m=65536,t=4,p=1$VXhnTzQuT0IxeWI0V2tpTQ$BLKFaZE4sARa9Qek8TQKFO0Ts6Mwn5JBZbnM94ar\/cM"
     },
     {
-        "name": "teste",
-        "email": "email3@example.com",
-        "password": "$argon2id$v=19$m=65536,t=4,p=1$bDRySS93eVpqLm4xUG9ORw$KFSpM3\/TWz7UvmWc6LiyiclDS7xfa4XHZzSR8RZelZw"
-    } 
-,{
-    "name": "natalia",
-    "email": "email2@example.com",
-    "password": "$argon2id$v=19$m=65536,t=4,p=1$cld3TkYuUFUvaDNaOC9pcA$Ipjy8PPhe\/4aoMaS+YrdAVEVI4Q8Q9JXw+pnhe4Brxk"
-}]
+        "name": "natalia",
+        "email": "natalia@natalia.com",
+        "password": "$argon2id$v=19$m=65536,t=4,p=1$c0hUQ2hDdnVtVzQ4c2hjRQ$BbNYYMHyfWsjQCNoqHArZ9qFfmIt1v3HMHJBW2MWX3g"
+    },
+    {
+        "name": "beatriz",
+        "email": "beatriz@beatriz.com",
+        "password": "$argon2id$v=19$m=65536,t=4,p=1$Y2I0LkcyZ1p5aEJveFZrbg$IEO2Uof+YWNv05ol9eHgtWos5r5ugdWt3rs3\/X6c+fk"
+    },
+    {
+        "name": "walter",
+        "email": "walter@walter.com",
+        "password": "$argon2id$v=19$m=65536,t=4,p=1$VDQ4Nm1Ycy40Ri9IWTc2Yg$xvfslXtde66RfcbE6JCJmcbS38niRDScR2aN1SA9sIk"
+    },
+    {
+        "name": "claudio",
+        "email": "claudio@claudio.com",
+        "password": "$argon2id$v=19$m=65536,t=4,p=1$Z2lPQW1HdE4yUy5kYWhReg$lvbKc7sQJlVK6JEry\/iZk+vWkN8VnPp+Dke7ab2\/G5Q"
+    },
+    {
+        "name": "natalia",
+        "email": "natali@natalia.com",
+        "password": "$argon2id$v=19$m=65536,t=4,p=1$S0kvS2E4bXZ5SlQ0R05lQw$dSVM\/1c\/7ho++03Sf6vMxXGNxHh+nT6srG9jYZcaTUc"
+    }
+]

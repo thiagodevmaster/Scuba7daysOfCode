@@ -6,27 +6,31 @@ class UserRepository
 {
     private const JSON_USER_PATH = __DIR__ . "/../../data/users.json";
 
-    public function addUser(array $userData): void
+    public function addUser(array $userData): bool
     {
+
         $json = json_encode(
             $userData,
             JSON_PRETTY_PRINT |
             JSON_UNESCAPED_UNICODE
         );
 
-        $fileOpen = fopen(self::JSON_USER_PATH, 'r+');
+        $fileUsersData = file_get_contents(self::JSON_USER_PATH);
+        $userArray = json_decode($fileUsersData);
         
-        //Enquanto não chegar ao fim do arquivo
-        while(!feof($fileOpen)){
-            //Ler a linha atual do loop e atribui a variavel $linha
-            $linha = fgets($fileOpen);
-            // se linha existir e for igual ao ultimo conjunto json 
-            if(trim($linha) === "}"){
-                fwrite($fileOpen ,",".$json."]");    
+        foreach($userArray as $user){
+            if($user->email === $userData['email']){
+                return false;
             }
         }
 
-        fclose($fileOpen);
-        
+        $userArray[] = $userData;
+        $userArray = json_encode(
+            $userArray,
+            JSON_PRETTY_PRINT
+        );
+
+        file_put_contents(self::JSON_USER_PATH, $userArray);
+        return true; 
     }
 }

@@ -2,10 +2,12 @@
 
 namespace Scuba\Controller;
 
+use Scuba\helper\FlashMessageTrait;
 use Scuba\Repository\UserRepository;
 
 class DoRegisterController extends UserRepository implements Controller
-{
+{   
+    use FlashMessageTrait;
 
     public function do_process_request()
     {
@@ -17,16 +19,19 @@ class DoRegisterController extends UserRepository implements Controller
         $password_hash = password_hash($password, PASSWORD_ARGON2ID);
 
         if($name === false){
+            $this->addErrorMessageName('Insira um nome válido !');
             header('Location: /register', response_code:302);
             return;
         }
 
         if($email === false){
+            $this->addErrorMessageEmail('Insira um email válido !');
             header('Location: /register', response_code:302);
             return;
         }
 
-        if($password === false || $password_confirm !== $password){
+        if($password === false || $password_confirm !== $password || strlen($password) <= 10){
+            $this->addErrorMessagePassword('Senhas incompatíveis ou com menos de 10 caracteres');
             header('Location: /register', response_code:302);
             return;
         }
@@ -37,10 +42,14 @@ class DoRegisterController extends UserRepository implements Controller
             "password" => $password_hash
         ];
 
-        $this->addUser($user_data);
+        
+        if($this->addUser($user_data) === false){
+            $this->addErrorMessage("Usuario \"$email\" já existe. Tente novamente!");
+            header("Location: /register", response_code:302);
+        }else{
+            $this->addSuccessMessage('Usuário inserido com sucesso!');
+            header('Location: /login', response_code:302);
+        }
          
-
-        header('Location: /login', response_code:302);
-
     }
 }
