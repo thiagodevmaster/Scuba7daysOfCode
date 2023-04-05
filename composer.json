@@ -12,5 +12,8 @@
         "psr-4": {
             "Scuba\\" : "src/"
         }
+    },
+    "require": {
+        "phpmailer/phpmailer": "^6.8"
     }
 }

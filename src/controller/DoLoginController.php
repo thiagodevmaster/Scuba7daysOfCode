@@ -3,11 +3,13 @@
 namespace Scuba\Controller;
 
 use Scuba\helper\FlashMessageTrait;
+use Scuba\helper\RenderViewTrait;
 
 class DoLoginController implements Controller
 {
 
     use FlashMessageTrait;
+    use RenderViewTrait;
 
     public function do_process_request()
     {
@@ -19,13 +21,22 @@ class DoLoginController implements Controller
        
         foreach($usersData as $user){
             $correct_password = password_verify($password, $user->password);
+            
             if($email === $user->email && $correct_password === true){
-                $_SESSION['logged'] = true;
-                header('Location: /home');
-                return;
+                
+                if($user->mail_validation === false){
+                    $this->addErrorMessage("email não confirmado");
+                    header('Location: /login');
+                    return;
+                }else{
+                    $_SESSION['logged'] = true;
+                    $this->addSuccessMessage("Login realizado com sucesso");
+                    $emailEncode = base64_encode($email);
+                    header("Location: /home?email=$emailEncode");
+                    return;
+                }                
             }
         }
-
 
         $this->addErrorMessage("Email ou senha inválidos!");
         header('Location: /login', response_code:302);

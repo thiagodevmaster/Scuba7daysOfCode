@@ -4,10 +4,12 @@ namespace Scuba\Controller;
 
 use Scuba\helper\FlashMessageTrait;
 use Scuba\Repository\UserRepository;
+use Scuba\helper\sendConfirmationEmailTrait;
 
 class DoRegisterController extends UserRepository implements Controller
 {   
     use FlashMessageTrait;
+    use sendConfirmationEmailTrait;
 
     public function do_process_request()
     {
@@ -39,17 +41,22 @@ class DoRegisterController extends UserRepository implements Controller
         $user_data = [
             "name" => $name,
             "email" => $email,
-            "password" => $password_hash
+            "password" => $password_hash,
+            "mail_validation" => false
         ];
 
-        
-        if($this->addUser($user_data) === false){
-            $this->addErrorMessage("Usuario \"$email\" já existe. Tente novamente!");
-            header("Location: /register", response_code:302);
+        if($this->sendEmail($email, $name) === true){
+            if($this->addUser($user_data) === true){
+                $this->addSuccessMessage("Usuário inserido com sucesso!\nConfirme seu e-mail!");
+                header('Location: /login', response_code:302);
+            }else{
+                $this->addErrorMessage("Usuario \"$email\" já existe. Tente novamente!");
+                header("Location: /register", response_code:302);
+            }
         }else{
-            $this->addSuccessMessage('Usuário inserido com sucesso!');
-            header('Location: /login', response_code:302);
+            $this->addErrorMessage("Falha no envio de Email de confirmação");
+            header("Location: /register", response_code:302);
         }
-         
+        
     }
 }

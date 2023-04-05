@@ -14,7 +14,8 @@ $http_method = $_SERVER['REQUEST_METHOD'];
 $freeRoutes = [
     '/login',
     '/register',
-    '/forget-password'
+    '/forget-password',
+    '/confirm_email'
 ];
 
 $isFreeRoute = in_array($path_info, $freeRoutes);
